@@ -1,0 +1,19 @@
+{
+  "name": "studybuddy-plus",
+  "version": "1.0.0",
+  "description": "Student productivity app using Firebase Auth and Express.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Hemanth",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

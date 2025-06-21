@@ -1,0 +1,32 @@
+<!-- calendar.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyBuddy+ Calendar</title>
+  <link rel="stylesheet" href="public/css/styles.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>📅 Study Calendar</h1>
+      <a href="dashboard.html" style="text-decoration:none;">
+        <button id="backBtn">← Back to Dashboard</button>
+      </a>
+    </header>
+
+    <section class="calendar-view">
+      <table id="calendarTable"></table>
+    </section>
+
+    <section id="tasksForDate" style="margin-top:2rem;">
+      <h2>Tasks for <span id="selectedDateLabel">Select a date</span></h2>
+      <ul id="tasksListByDate"></ul>
+    </section>
+  </div>
+
+  <script type="module" src="public/js/firebaseConfig.js"></script>
+  <script type="module" src="public/js/calendar.js"></script>
+</body>
+</html>
