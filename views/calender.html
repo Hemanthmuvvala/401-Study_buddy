@@ -1,32 +1,36 @@
-<!-- calendar.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StudyBuddy+ Calendar</title>
-  <link rel="stylesheet" href="public/css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
-  <div class="dashboard-container">
-    <header>
-      <h1>📅 Study Calendar</h1>
-      <a href="dashboard.html" style="text-decoration:none;">
-        <button id="backBtn">← Back to Dashboard</button>
+  <div class="dashboard-container calendar-container">
+    <header class="calendar-header">
+      <h2>📅 Study Calendar</h2>
+      <a href="/dashboard" style="text-decoration:none;"> <button id="backBtn">← Back to Dashboard</button>
       </a>
     </header>
 
-    <section class="calendar-view">
+    <section class="section-card calendar-view">
       <table id="calendarTable"></table>
     </section>
 
-    <section id="tasksForDate" style="margin-top:2rem;">
-      <h2>Tasks for <span id="selectedDateLabel">Select a date</span></h2>
+    <section class="section-card task-list-by-date">
+      <h3 id="tasksForDateHeader">Tasks for <span id="selectedDateLabel">Select a date</span></h3>
       <ul id="tasksListByDate"></ul>
+      <div id="calendarAuthMessage"
+        style="display: none; background-color: #ffe6e6; color: #d63031; padding: 0.8rem; border-radius: 8px; margin-top: 1rem; text-align: center; font-weight: 500; border: 1px solid #ff7675;">
+      </div>
     </section>
   </div>
 
-  <script type="module" src="public/js/firebaseConfig.js"></script>
-  <script type="module" src="public/js/calendar.js"></script>
+  <script type="module" src="/js/firebaseConfig.js"></script>
+  <script type="module" src="/js/calendar.js"></script>
 </body>
+
 </html>

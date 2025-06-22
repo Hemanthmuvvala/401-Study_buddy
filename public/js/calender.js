@@ -1,19 +1,31 @@
-// public/js/calendar.js
 import { auth } from "./firebaseConfig.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
-// Elements
 const calendarTable = document.getElementById("calendarTable");
 const selectedDateLabel = document.getElementById("selectedDateLabel");
 const tasksListByDate = document.getElementById("tasksListByDate");
+const calendarAuthMessage = document.getElementById("calendarAuthMessage");
+const tasksForDateHeader = document.getElementById("tasksForDateHeader");
 
-// Check user
 onAuthStateChanged(auth, (user) => {
-  if (!user) window.location.href = "index.html";
-  else generateCalendar(new Date());
+  if (!user) {
+    if (calendarTable) {
+      calendarTable.innerHTML = "<tr><td>Please log in to view the calendar.</td></tr>";
+    }
+    selectedDateLabel.textContent = "N/A";
+    tasksListByDate.innerHTML = "<li>Please log in to view tasks for dates.</li>";
+    calendarAuthMessage.style.display = "block";
+    calendarAuthMessage.textContent = "Please log in to view and manage your study calendar.";
+    tasksForDateHeader.style.display = "none";
+  } else {
+    generateCalendar(new Date());
+    selectedDateLabel.textContent = "Select a date";
+    tasksListByDate.innerHTML = "<li>No date selected.</li>";
+    calendarAuthMessage.style.display = "none";
+    tasksForDateHeader.style.display = "block";
+  }
 });
 
-// Generate calendar grid for current month
 function generateCalendar(currentDate) {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -37,14 +49,14 @@ function generateCalendar(currentDate) {
   }
 
   html += "</tr>";
-  calendarTable.innerHTML = html;
+  if (calendarTable) {
+    calendarTable.innerHTML = html;
+  }
 
-  // Highlight today's date
   const today = new Date().toISOString().split("T")[0];
   document.querySelectorAll(".calendar-day").forEach((cell) => {
     if (cell.dataset.date === today) {
-      cell.style.backgroundColor = "#ffeaa7";
-      cell.style.fontWeight = "bold";
+      cell.classList.add("today");
     }
 
     cell.addEventListener("click", () => {
@@ -55,12 +67,10 @@ function generateCalendar(currentDate) {
   });
 }
 
-// Pad date numbers
 function pad(num) {
   return num.toString().padStart(2, "0");
 }
 
-// Load tasks from localStorage for a specific date
 function loadTasksForDate(date) {
   const allTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
   const filtered = allTasks.filter((task) => task.date === date);

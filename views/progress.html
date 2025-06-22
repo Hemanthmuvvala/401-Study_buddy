@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyBuddy+ Progress</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .progress-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-summary p {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .progress-summary strong {
+            color: #6c5ce7;
+        }
+
+        .progress-posts ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .progress-posts li {
+            background-color: #f8f8f8;
+            border: 1px solid #eee;
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-posts .delete-post-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .progress-posts .delete-post-btn:hover {
+            background-color: #e63946;
+        }
+
+        .progress-auth-message {
+            background-color: #ffe6e6;
+            color: #d63031;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid #ff7675;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container progress-container">
+        <header class="progress-header">
+            <h2>📈 Progress Tracker</h2>
+            <a href="/dashboard" style="text-decoration:none;"> <button id="backToDashboardBtn">← Back to
+                    Dashboard</button> </a>
+        </header>
+
+        <section class="section-card progress-summary">
+            <h3>Your Study Progress</h3>
+            <div id="progressAuthMessage" class="progress-auth-message" style="display: none;">
+                Please log in to view your progress.
+            </div>
+            <div id="progressDetails" style="display: none;">
+                <p><strong>Total Study Entries:</strong> <span id="totalPostsCount">0</span></p>
+                <p><strong>Completed Entries:</strong> <span id="completedPostsCount">0</span></p>
+                <p><strong>In Progress Entries:</strong> <span id="inProgressPostsCount">0</span></p>
+            </div>
+        </section>
+
+        <section class="section-card progress-posts">
+            <h3>All Study Entries </h3>
+            <ul id="allPostsList">
+            </ul>
+        </section>
+    </div>
+
+    <script type="module" src="/js/firebaseConfig.js"></script>
+    <script type="module" src="/js/progress.js"></script>
+</body>
+
+</html>

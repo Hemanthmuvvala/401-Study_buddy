@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyBuddy+ Profile</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .profile-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-info {
+            margin-bottom: 2rem;
+        }
+
+        .profile-info p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .profile-info strong {
+            color: #6c5ce7;
+        }
+
+        .profile-tasks {
+            margin-top: 2rem;
+        }
+
+        .profile-tasks ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .profile-tasks li {
+            background-color: #f8f8f8;
+            border: 1px solid #eee;
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-tasks .delete-task-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .profile-tasks .delete-task-btn:hover {
+            background-color: #e63946;
+        }
+
+        .profile-auth-message {
+            background-color: #ffe6e6;
+            color: #d63031;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid #ff7675;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container profile-container">
+        <header class="profile-header">
+            <h2>👤 User Profile</h2>
+            <a href="/dashboard" style="text-decoration:none;"> <button id="backToDashboardBtn">← Back to
+                    Dashboard</button> </a>
+        </header>
+
+        <section class="section-card profile-info">
+            <h3>Your Information</h3>
+            <div id="profileAuthMessage" class="profile-auth-message" style="display: none;">
+                Please log in to view your profile.
+            </div>
+            <div id="profileDetails" style="display: none;">
+                <p><strong>Name:</strong> <span id="profileName"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>Age:</strong> <span id="profileAge"></span></p>
+                <p><strong>Proffession:</strong> <span id="profileWork"></span></p>
+            </div>
+        </section>
+
+        <section class="section-card profile-tasks">
+            <h3>Recent Tasks</h3>
+            <ul id="recentTasksList">
+            </ul>
+        </section>
+
+        <section class="section-card profile-tasks">
+            <h3>Completed Tasks</h3>
+            <p><strong>Total Completed:</strong> <span id="completedTasksCount">0</span></p>
+        </section>
+    </div>
+
+    <script type="module" src="/js/firebaseConfig.js"></script>
+    <script type="module" src="/js/profile.js"></script>
+</body>
+
+</html>

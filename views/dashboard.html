@@ -1,35 +1,169 @@
-<!-- dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StudyBuddy+ Dashboard</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .dashboard-quick-links {
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+    }
+
+    .dashboard-quick-links .section-card {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .dashboard-quick-links .section-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .dashboard-quick-links .section-card button {
+      width: 100%;
+      padding: 0.7rem 1rem;
+    }
+
+    .dashboard-container section:not(.dashboard-quick-links .section-card) {
+      margin-top: 1.5rem;
+    }
+
+    .quote-box,
+    .task-section {
+      margin-top: 2rem;
+    }
+
+    #taskForm {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    #taskForm input[type="text"],
+    #taskForm textarea {
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    #taskForm textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    #taskForm button {
+      padding: 0.7rem 1rem;
+      background-color: #6c5ce7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    #taskForm button:hover {
+      background-color: #5243c2;
+    }
+
+    #taskList {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    #taskList li {
+      background-color: #f8f8f8;
+      border: 1px solid #eee;
+      padding: 0.8rem;
+      margin-bottom: 0.5rem;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #taskList .delete-task-btn {
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    #taskList .delete-task-btn:hover {
+      background-color: #e63946;
+    }
+  </style>
 </head>
+
 <body>
   <div class="dashboard-container">
-    <header>
+    <header class="dashboard-header">
       <h1>Welcome, <span id="username">Student</span> 👋</h1>
       <button id="logoutBtn">Logout</button>
     </header>
 
-    <section class="quote-box">
+    <div class="dashboard-quick-links">
+      <section class="section-card">
+        <h2>👤 Your Profile</h2>
+        <a href="/profile" style="text-decoration:none;">
+          <button id="goToProfileBtn"
+            style="background-color: #6c5ce7; color: white; padding: 0.8rem 1.4rem; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: background-color 0.3s, transform 0.2s;">View
+            Profile</button>
+        </a>
+      </section>
+
+      <section class="section-card">
+        <h2>📈 View Progress</h2>
+        <a href="/progress" style="text-decoration:none;">
+          <button id="goToProgressBtn"
+            style="background-color: #2ecc71; color: white; padding: 0.8rem 1.4rem; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: background-color 0.3s, transform 0.2s;">Track
+            Progress</button>
+        </a>
+      </section>
+
+      <section class="section-card">
+        <h2>🗓️ Explore Calendar</h2>
+        <a href="/calendar" style="text-decoration:none;">
+          <button id="goToCalendarBtn"
+            style="background-color: #6c5ce7; color: white; padding: 0.8rem 1.4rem; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: background-color 0.3s, transform 0.2s;">Go
+            to Calendar</button>
+        </a>
+      </section>
+    </div>
+    <section class="section-card quote-box">
       <h2>🌟 Quote of the Day</h2>
       <p id="quoteText">Loading...</p>
     </section>
 
-    <section class="task-section">
+    <section class="section-card task-section">
       <h2>📝 Today's Study Plan</h2>
+      <div id="authMessage" style="display: none;"></div>
       <form id="taskForm">
-        <input type="text" id="taskInput" placeholder="e.g., Revise DSA Trees" required />
+        <input type="text" id="taskInput" placeholder="Task Title (e.g., Revise DSA Trees)" required />
+        <textarea id="taskDescription" placeholder="Task Description (e.g., Cover binary trees and graph traversals)"
+          required></textarea>
+        <input type="date" id="taskDate" required />
+        <input type="time" id="taskTime" required />
         <button type="submit">Add Task</button>
       </form>
       <ul id="taskList"></ul>
     </section>
   </div>
 
-  <script type="module" src="public/js/firebaseConfig.js"></script>
-  <script type="module" src="public/js/dashboard.js"></script>
+  <script type="module" src="/js/firebaseConfig.js"></script>
+  <script type="module" src="/js/dashboard.js"></script>
 </body>
+
 </html>
