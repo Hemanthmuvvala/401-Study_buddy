@@ -56,6 +56,7 @@ bash
 git clone https://github.com/Hemanthmuvvala/studybuddy.git
 cd studybuddy-plus
 ### 2. Install dependencies
+bash
 npm install
 If using nodemon:
 npm install --save-dev nodemon
@@ -68,11 +69,14 @@ const firebaseConfig = {
   ...
 };
 #### 4. Run the development server
-node server.js     # or
-npm run dev       # if using nodemon
-👤 Author
+bash 
+node server.js 
+# or
+bash
+npm run dev       
+### 👤 Author
 Muvvala Hemanth Venkata Naga Pavan Kumar.
-📃 License
+### 📃 License
 This project is open-source and available for personal and educational use.
 
 
