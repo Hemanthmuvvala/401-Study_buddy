@@ -23,7 +23,7 @@ async function fetchQuote() {
         quoteText.textContent = data.content + " - " + data.author;
     } catch (error) {
         console.error("Error fetching quote:", error);
-        quoteText.textContent = "Failed to load a quote.";
+        quoteText.textContent = "It's always seems impossible until its done.";
     }
 }
 
