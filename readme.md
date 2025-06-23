@@ -52,9 +52,10 @@ studybuddy-plus/
 
 ### 1. Clone the repository
 
-bash
+''' bash 
 git clone https://github.com/Hemanthmuvvala/studybuddy.git
-cd studybuddy-plus
+cd studybuddy-plus 
+'''
 ### 2. Install dependencies
 bash
 npm install
@@ -70,8 +71,7 @@ const firebaseConfig = {
 };
 #### 4. Run the development server
 bash 
-node server.js 
-# or
+node server.js  # or
 bash
 npm run dev       
 ### 👤 Author
